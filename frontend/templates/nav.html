@@ -1,0 +1,70 @@
+<body>
+  <div class="bottom-nav flex justify-around bg-white border-t fixed bottom-0 w-full">
+    <a href="{% url 'home' %}" class="nav-item relative group {% if request.path == '/' %}active{% endif %}">
+      <svg viewBox="0 0 24 24" class="w-6 h-6 mx-auto">
+        <path d="M12 3L2 12h3v9h6v-6h2v6h6v-9h3z" />
+      </svg>
+      <p class="text-xs mt-1 group-hover:text-orange-500 {% if request.path == '/' %}text-blue-500{% endif %}">Asosiy
+      </p>
+    </a>
+    <a href="{% url 'mutolaa' %}" class="nav-item relative group {% if request.path == '/mutolaa/' %}active{% endif %}">
+      <svg viewBox="0 0 24 24" class="w-6 h-6 mx-auto">
+        <path d="M19 2H9a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10V2zM11 18H5V4h6v14z" />
+      </svg>
+      <p class="text-xs mt-1 group-hover:text-orange-500 {% if request.path == '/mutolaa/' %}text-blue-500{% endif %}">
+        Mutolaa</p>
+    </a>
+    <a href="{% url 'market' %}" class="nav-item relative group {% if request.path == '/market/' %}active{% endif %}">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!-Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M320 64C326.6 64 332.9 66.7 337.4 71.5L481.4 223.5L481.9 224L560 224C577.7 224 592 238.3 592 256C592 270.5 582.4 282.7 569.2 286.7L523.1 493.9C516.6 523.2 490.6 544 460.6 544L179.3 544C149.3 544 123.3 523.2 116.8 493.9L70.8 286.7C57.6 282.8 48 270.5 48 256C48 238.3 62.3 224 80 224L158.1 224L158.6 223.5L302.6 71.5C307.1 66.7 313.4 64 320 64zM320 122.9L224.2 224L415.8 224L320 122.9zM240 328C240 314.7 229.3 304 216 304C202.7 304 192 314.7 192 328L192 440C192 453.3 202.7 464 216 464C229.3 464 240 453.3 240 440L240 328zM320 304C306.7 304 296 314.7 296 328L296 440C296 453.3 306.7 464 320 464C333.3 464 344 453.3 344 440L344 328C344 314.7 333.3 304 320 304zM448 328C448 314.7 437.3 304 424 304C410.7 304 400 314.7 400 328L400 440C400 453.3 410.7 464 424 464C437.3 464 448 453.3 448 440L448 328z"/></svg>
+      <p class="text-xs mt-1 group-hover:text-orange-500 {% if request.path == '/market/' %}text-blue-500{% endif %}">
+        Market</p>
+    </a>
+    <a href="{% url 'davra' %}" class="nav-item relative group {% if request.path == '/davra/' %}active{% endif %}">
+      <div class="inline-block">
+  <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"
+       class="cursor-pointer transition-colors group active:text-orange-500" 
+       onclick="this.classList.add('text-orange-500')">
+    <!-- Body -->
+    <rect x="10" y="20" width="60" height="50" rx="8"
+          class="fill-white stroke-gray-400 group-hover:stroke-orange-500 stroke-2 text-current" />
+
+    <!-- Top -->
+    <rect x="10" y="20" width="60" height="15" rx="6"
+          class="fill-gray-400 group-hover:fill-orange-500 text-current" />
+
+    <!-- Check mark -->
+    <path d="M15 40 L30 55 L55 30"
+          class="stroke-gray-400 group-hover:stroke-orange-500 stroke-3 text-current" />
+  </svg>
+</div>
+
+
+
+
+
+      <p class="text-xs mt-1 group-hover:text-orange-500 {% if request.path == '/davra/' %}text-blue-500{% endif %}">My
+        Day</p>
+    </a>
+    <a href="{% url 'sahifam' %}" class="nav-item relative group {% if request.path == '/sahifam/' %}active{% endif %}">
+      <svg viewBox="0 0 24 24" class="w-6 h-6 mx-auto">
+        <path
+          d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+      </svg>
+      <p class="text-xs mt-1 group-hover:text-orange-500 {% if request.path == '/sahifam/' %}text-blue-500{% endif %}">
+        Sahifam</p>
+    </a>
+  </div>
+
+
+
+  <script>
+    const items = document.querySelectorAll(".nav-item");
+
+    items.forEach(item => {
+      item.addEventListener("click", function () {
+        items.forEach(i => i.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+  </script>
+</body>

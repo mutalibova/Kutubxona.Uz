@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kirish</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-orange-200 via-orange-100 to-white flex items-center justify-center">
+
+<div class="w-[390px] h-[844px] bg-white shadow-2xl relative overflow-hidden border border-orange-100">
+
+<!-- Background -->
+<div class="absolute inset-0 bg-gradient-to-br from-orange-300/20 to-orange-500/10 blur-3xl"></div>
+
+<div class="relative z-10 h-full flex flex-col justify-center px-8">
+
+<div class="text-center mb-8">
+<h1 class="text-3xl font-bold text-orange-500"> Kutubxona.uz</h1>
+<p class="text-gray-500 text-sm mt-2">Xush kelibsiz</p>
+</div>
+
+<div class="flex bg-orange-100 rounded-2xl p-1 mb-6">
+<button onclick="showLogin()" id="loginBtn"
+class="w-1/2 py-2 rounded-xl bg-orange-500 text-white font-semibold transition">
+Kirish
+</button>
+<button onclick="showRegister()" id="registerBtn"
+class="w-1/2 py-2 rounded-xl text-orange-500 font-semibold transition">
+Ro‘yxatdan o‘tish
+</button>
+</div>
+
+<form id="loginForm" class="space-y-4">
+<input type="text" placeholder="Login"
+class="w-full px-4 py-3 rounded-xl bg-gray-100 focus:ring-2 focus:ring-orange-400 outline-none">
+
+<input type="password" placeholder="Parol"
+class="w-full px-4 py-3 rounded-xl bg-gray-100 focus:ring-2 focus:ring-orange-400 outline-none">
+
+<button type="button" onclick="successTransition()"
+class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold shadow-lg transition">
+Kirish
+</button>
+</form>
+
+<!-- REGISTER -->
+<form id="registerForm" class="space-y-4 hidden">
+
+<input type="text" placeholder="Telefon raqamingiz"
+class="w-full px-4 py-3 rounded-xl bg-gray-100 focus:ring-2 focus:ring-orange-400 outline-none">
+
+<input type="text" placeholder="SMS kod"
+class="w-full px-4 py-3 rounded-xl bg-gray-100 focus:ring-2 focus:ring-orange-400 outline-none">
+
+<input type="text" placeholder="Username kiriting"
+class="w-full px-4 py-3 rounded-xl bg-gray-100 focus:ring-2 focus:ring-orange-400 outline-none">
+
+<input type="password" placeholder="Parol yarating"
+class="w-full px-4 py-3 rounded-xl bg-gray-100 focus:ring-2 focus:ring-orange-400 outline-none">
+
+<input type="password" placeholder="Parolni qayta kiriting"
+class="w-full px-4 py-3 rounded-xl bg-gray-100 focus:ring-2 focus:ring-orange-400 outline-none">
+
+<button type="button" onclick="successTransition()"
+class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold shadow-lg transition">
+Ro‘yxatdan o‘tish
+</button>
+
+</form>
+
+</div>
+
+<!-- SUCCESS CARD OQROQ ORQA FON BILAN -->
+<div id="successCard"
+     class="fixed inset-0 flex items-center justify-center opacity-0 pointer-events-none z-50 transition-opacity duration-500">
+
+  <div class="relative bg-white/95 backdrop-blur-xl border border-white/30 rounded-3xl shadow-2xl p-8 text-center transform scale-90 transition-all duration-500">
+    
+    <!-- Gradient Glow (optional) -->
+    <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-orange-400/30 via-pink-300/20 to-yellow-300/20 blur-3xl -z-10"></div>
+
+    <div class="text-5xl mb-4 animate-bounce">🎉</div>
+
+    <h2 class="text-xl font-bold text-gray-700 mb-2">
+      Siz Kutubxona.uz saytiga
+    </h2>
+
+    <p class="text-orange-500 font-semibold">
+      muvaffaqqiyatli o'tdingiz
+    </p>
+
+  </div>
+</div>
+
+
+</div>
+
+<script>
+
+function showRegister(){
+document.getElementById("loginForm").classList.add("hidden");
+document.getElementById("registerForm").classList.remove("hidden");
+
+document.getElementById("loginBtn").classList.remove("bg-orange-500","text-white");
+document.getElementById("registerBtn").classList.add("bg-orange-500","text-white");
+}
+
+function showLogin(){
+document.getElementById("registerForm").classList.add("hidden");
+document.getElementById("loginForm").classList.remove("hidden");
+
+document.getElementById("registerBtn").classList.remove("bg-orange-500","text-white");
+document.getElementById("loginBtn").classList.add("bg-orange-500","text-white");
+}
+
+function successTransition(){
+    const card = document.getElementById("successCard");
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+
+    // Formalarni bloklash
+    loginForm.style.pointerEvents = "none";
+    registerForm.style.pointerEvents = "none";
+
+    // Card fade va scale
+    card.classList.remove("opacity-0", "pointer-events-none");
+    card.classList.add("opacity-100");
+
+    const cardContent = card.querySelector("div");
+    cardContent.classList.remove("scale-90");
+    cardContent.classList.add("scale-100");
+
+    // 3 soniya kutib keyin redirect
+    setTimeout(() => {
+        window.location.href = "/";
+    }, 3000);
+}
+
+
+
+</script>
+
+</body>
+</html>

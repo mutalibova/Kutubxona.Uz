@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kutubxona.uz</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+  <style>
+    body {
+      margin: 0;
+      padding-bottom: 100px;
+      /* navbar joyi uchun */
+
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 500px;
+      height: 70px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-radius: 35px;
+      background: rgba(255, 255, 255, 0.8);
+      /* oqroq va 80% shaffof */
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item {
+      text-decoration: none;
+      color: #888;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .nav-item svg {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 3px;
+      transition: transform 0.3s, fill 0.3s;
+      fill: currentColor;
+    }
+
+    .nav-item.active {
+      color: #ff6a00;
+    }
+
+    .nav-item.active svg {
+      transform: translateY(-10px) scale(1.2);
+      animation: bounce 0.5s;
+    }
+
+    .nav-item.active p {
+      color: #ff6a00;
+    }
+
+    @keyframes bounce {
+      0% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-15px) scale(1.2);
+      }
+
+      70% {
+        transform: translateY(-8px) scale(1.1);
+      }
+
+      100% {
+        transform: translateY(-10px) scale(1.2);
+      }
+    }
+
+    .nav-item:hover {
+      color: #ff6a00;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  {% block content %}
+
+
+
+
+  {% endblock %}
+
+  {% include "nav.html" %}
+
+
+</body>
+
+</html>

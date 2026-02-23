@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body class="bg-gradient-to-b from-orange-50 to-white flex justify-center">
+
+
+
+  <div class="w-full max-w-md min-h-screen pb-28">
+
+    <nav
+      class="w-full fixed top-0 left-0 bg-white/95 backdrop-blur-sm shadow-md px-4 py-3 flex items-center justify-between z-50">
+
+      <div class="text-lg sm:text-xl font-bold text-orange-500 truncate">
+
+        <svg width="350" height="50" viewBox="0 0 560 90" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="bookGradSoft" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FDBA74" />
+              <stop offset="100%" stop-color="#FB923C" />
+            </linearGradient>
+          </defs>
+          <g transform="translate(10,15)">
+            <path d="M10 15 C30 5, 60 5, 80 15 V60 C60 50, 30 50, 10 60 Z" fill="url(#bookGradSoft)" />
+            <path d="M80 15 C100 5, 130 5, 150 15 V60 C130 50, 100 50, 80 60 Z" fill="url(#bookGradSoft)"
+              opacity="0.85" />
+            <line x1="80" y1="15" x2="80" y2="60" stroke="#ffffff" stroke-width="2.5" />
+          </g> <text x="190" y="55" font-family="Poppins, Arial, sans-serif" font-size="36" font-weight="600"
+            fill="orange" letter-spacing="1"> kutubxona<tspan fill="#FDBA74">.uz</tspan> </text>
+        </svg>
+      </div>
+
+      <a href="{% url 'kirish' %}">
+        <button
+          class="bg-orange-500 text-white px-3 py-1.5 rounded-lg font-semibold shadow hover:bg-orange-600 transition text-sm sm:text-base">
+          Kirish
+        </button>
+      </a>
+
+    </nav>
+
+
+    <section class="px-4 mt-24">
+      <div class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-6 rounded-3xl shadow-xl">
+        <h2 class="text-xl font-bold mb-2">
+          Kitoblar olami sizni kutmoqda
+        </h2>
+        <p class="text-sm opacity-90">
+          Eng sara bestseller va yangi kitoblarni online o‘qing
+        </p>
+      </div>
+    </section>
+
+
+    <div class="px-4 mt-6">
+      <div class="flex items-center bg-white rounded-2xl shadow-md px-4 py-3">
+        <input type="text" placeholder="Kitob nomi yoki muallif..." class="flex-1 outline-none text-sm">
+        <button class="bg-orange-500 text-white px-4 py-2 rounded-xl text-sm font-semibold">
+          Qidirish
+        </button>
+      </div>
+    </div>
+
+
+    <section class="px-4 mt-8">
+      <h3 class="text-xl font-bold text-gray-800 mb-5">
+        Kategoriyalar
+      </h3>
+
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide !w-auto">
+            <button
+              class="px-6 py-3 bg-orange-100 text-orange-700 rounded-full text-base font-semibold shadow-sm active:scale-95 transition">
+              Badiiy
+            </button>
+          </div>
+
+          <div class="swiper-slide !w-auto">
+            <button
+              class="px-6 py-3 bg-orange-100 text-orange-700 rounded-full text-base font-semibold shadow-sm active:scale-95 transition">
+              Romantik
+            </button>
+          </div>
+
+          <div class="swiper-slide !w-auto">
+            <button
+              class="px-6 py-3 bg-orange-100 text-orange-700 rounded-full text-base font-semibold shadow-sm active:scale-95 transition">
+              Fantastika
+            </button>
+          </div>
+
+          <div class="swiper-slide !w-auto">
+            <button
+              class="px-6 py-3 bg-orange-100 text-orange-700 rounded-full text-base font-semibold shadow-sm active:scale-95 transition">
+              Detektiv
+            </button>
+          </div>
+
+          <div class="swiper-slide !w-auto">
+            <button
+              class="px-6 py-3 bg-orange-100 text-orange-700 rounded-full text-base font-semibold shadow-sm active:scale-95 transition">
+              Tarixiy
+            </button>
+          </div>
+
+          <div class="swiper-slide !w-auto">
+            <button
+              class="px-6 py-3 bg-orange-100 text-orange-700 rounded-full text-base font-semibold shadow-sm active:scale-95 transition">
+              Biznes
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 mt-8">
+      <h3 class="text-lg font-bold text-gray-800 mb-4">
+        Mashhurlar
+      </h3>
+
+      <div class="grid grid-cols-2 gap-4">
+        {% for book in books %}
+        <a href="{% url 'kitob' book.id %}">
+          <div class="group bg-white rounded-2xl shadow-md overflow-hidden 
+        transition duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+
+            <div class="relative overflow-hidden">
+              {% if book.ktob %}
+              <img src="{{ book.ktob.url }}"
+                class="w-full h-52 object-cover transition duration-500 group-hover:scale-110">
+              {% endif %}
+
+              <div class="absolute inset-0 bg-orange-500/0 
+            group-hover:bg-orange-500/10 transition duration-300"></div>
+            </div>
+
+            <div class="p-4">
+              <h2 class="text-sm font-semibold text-gray-800 truncate group-hover:text-orange-500 transition">
+                {{ book.nomi }}
+              </h2>
+
+              <p class="text-xs text-gray-500 mb-2 truncate">
+                {{ book.yozuvchi }}
+              </p>
+
+              <div class="flex space-x-1 text-lg">
+                {% for i in "12345" %}
+                <span class="transition duration-200 
+                {% if forloop.counter <= book.rating %}
+                  text-orange-400
+                {% else %}
+                  text-gray-300
+                {% endif %}
+                hover:text-orange-500">
+                  ★
+                </span>
+                {% endfor %}
+              </div>
+            </div>
+
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+
+
+    </section>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.rating').forEach(ratingDiv => {
+      const stars = ratingDiv.querySelectorAll('.star');
+
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          const value = star.getAttribute('data-value');
+
+          stars.forEach(s => {
+            if (s.getAttribute('data-value') <= value) {
+              s.classList.remove('text-gray-300');
+              s.classList.add('text-orange-400');
+            } else {
+              s.classList.remove('text-orange-400');
+              s.classList.add('text-gray-300');
+            }
+          });
+        });
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: "auto",
+      spaceBetween: 12,
+      freeMode: true,
+    });
+  </script>
+
+
+
+</body>
+{% endblock %}

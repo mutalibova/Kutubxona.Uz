@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% block content %}
+
+<body class="bg-gradient-to-br from-orange-50 to-white min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="sticky top-0 bg-white/70 backdrop-blur-md shadow-md px-4 py-4 flex justify-between items-center z-50">
+  <h1 class="text-2xl font-extrabold text-orange-500 tracking-wide">Market</h1>
+  <button class="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-5 py-2 rounded-2xl shadow-lg hover:scale-105 transition transform duration-300 font-semibold">
+    Filter
+  </button>
+</header>
+
+<!-- Categories -->
+<section class="px-4 mt-5">
+  <h2 class="text-lg font-bold text-gray-800 mb-3">Kategoriyalar</h2>
+  <div class="flex gap-3 overflow-x-auto pb-3 scrollbar-hide">
+    <span class="px-5 py-2 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 rounded-full text-sm font-medium shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-300 whitespace-nowrap cursor-pointer">Badiiy</span>
+    <span class="px-5 py-2 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 rounded-full text-sm font-medium shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-300 whitespace-nowrap cursor-pointer">Romantik</span>
+    <span class="px-5 py-2 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 rounded-full text-sm font-medium shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-300 whitespace-nowrap cursor-pointer">Fantastika</span>
+    <span class="px-5 py-2 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 rounded-full text-sm font-medium shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-300 whitespace-nowrap cursor-pointer">Detektiv</span>
+    <span class="px-5 py-2 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 rounded-full text-sm font-medium shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-300 whitespace-nowrap cursor-pointer">Tarixiy</span>
+    <span class="px-5 py-2 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 rounded-full text-sm font-medium shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-300 whitespace-nowrap cursor-pointer">Biznes</span>
+    <span class="px-5 py-2 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 rounded-full text-sm font-medium shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-300 whitespace-nowrap cursor-pointer">Psixologiya</span>
+    <span class="px-5 py-2 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 rounded-full text-sm font-medium shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-300 whitespace-nowrap cursor-pointer">Bolalar uchun</span>
+  </div>
+</section>
+
+<!-- Products Grid -->
+<section class="px-4 mt-6 flex-1">
+  <div class="grid grid-cols-2 gap-4">
+
+    <!-- Premium Card Example -->
+    <div class="bg-white/60 backdrop-blur-md rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-105 transition transform duration-300 border border-orange-100">
+      <div class="relative h-44">
+        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
+        <div class="absolute top-2 right-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white px-3 py-1 rounded-2xl text-xs font-semibold shadow">Hot</div>
+      </div>
+      <div class="p-4">
+        <h3 class="text-sm font-bold text-gray-800 truncate">Sarguzasht kitobi</h3>
+        <p class="text-xs text-gray-500 mb-3 truncate">Hayajonli va qiziqarli sarguzasht hikoya</p>
+        <div class="flex justify-between items-center">
+          <span class="text-orange-500 font-bold text-sm">45,000 so'm</span>
+          <button class="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-4 py-2 rounded-2xl shadow-lg hover:scale-105 transition transform duration-300 text-xs font-semibold">
+            Sotib olish
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copy Card 2 -->
+    <div class="bg-white/60 backdrop-blur-md rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-105 transition transform duration-300 border border-orange-100">
+      <div class="relative h-44">
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
+        <div class="absolute top-2 right-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white px-3 py-1 rounded-2xl text-xs font-semibold shadow">New</div>
+      </div>
+      <div class="p-4">
+        <h3 class="text-sm font-bold text-gray-800 truncate">Romantik hikoya</h3>
+        <p class="text-xs text-gray-500 mb-3 truncate">Sevgi va hissiyotga boy hikoya</p>
+        <div class="flex justify-between items-center">
+          <span class="text-orange-500 font-bold text-sm">38,000 so'm</span>
+          <button class="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-4 py-2 rounded-2xl shadow-lg hover:scale-105 transition transform duration-300 text-xs font-semibold">
+            Sotib olish
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copy Card 3 -->
+    <div class="bg-white/60 backdrop-blur-md rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-105 transition transform duration-300 border border-orange-100">
+      <div class="relative h-44">
+        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
+      </div>
+      <div class="p-4">
+        <h3 class="text-sm font-bold text-gray-800 truncate">Fantastika dunyosi</h3>
+        <p class="text-xs text-gray-500 mb-3 truncate">Sirli va sehrli olamga sayohat</p>
+        <div class="flex justify-between items-center">
+          <span class="text-orange-500 font-bold text-sm">50,000 so'm</span>
+          <button class="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-4 py-2 rounded-2xl shadow-lg hover:scale-105 transition transform duration-300 text-xs font-semibold">
+            Sotib olish
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copy Card 4 -->
+    <div class="bg-white/60 backdrop-blur-md rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-105 transition transform duration-300 border border-orange-100">
+      <div class="relative h-44">
+        <img src="https://images.unsplash.com/photo-1581091215363-28f8bdb5f818?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
+      </div>
+      <div class="p-4">
+        <h3 class="text-sm font-bold text-gray-800 truncate">Biznes bo‘lish sirlarini</h3>
+        <p class="text-xs text-gray-500 mb-3 truncate">Ishbilarmonlar uchun qo‘llanma</p>
+        <div class="flex justify-between items-center">
+          <span class="text-orange-500 font-bold text-sm">60,000 so'm</span>
+          <button class="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-4 py-2 rounded-2xl shadow-lg hover:scale-105 transition transform duration-300 text-xs font-semibold">
+            Sotib olish
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+
+{% endblock %}

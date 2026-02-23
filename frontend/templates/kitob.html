@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% block content %}
+
+
+<body class="bg-gray-100 top-[50px] relative font-sans">
+    <nav
+        class="w-full fixed top-0 left-0 bg-white/95 backdrop-blur-sm shadow-md px-4 py-3 flex items-center justify-between z-50">
+
+        <div class="text-lg sm:text-xl font-bold text-orange-500 truncate">
+            <a href="{% url 'home' %}">
+
+                <svg width="350" height="50" viewBox="0 0 560 90" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bookGradSoft" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#FDBA74" />
+                            <stop offset="100%" stop-color="#FB923C" />
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(10,15)">
+                        <path d="M10 15 C30 5, 60 5, 80 15 V60 C60 50, 30 50, 10 60 Z" fill="url(#bookGradSoft)" />
+                        <path d="M80 15 C100 5, 130 5, 150 15 V60 C130 50, 100 50, 80 60 Z" fill="url(#bookGradSoft)"
+                            opacity="0.85" />
+                        <line x1="80" y1="15" x2="80" y2="60" stroke="#ffffff" stroke-width="2.5" />
+                    </g> <text x="190" y="55" font-family="Poppins, Arial, sans-serif" font-size="36" font-weight="600"
+                        fill="orange" letter-spacing="1"> kutubxona<tspan fill="#FDBA74">.uz</tspan> </text>
+                </svg>
+            </a>
+        </div>
+
+        <a href="{% url 'kirish' %}">
+            <button
+                class="bg-orange-500 text-white px-3 py-1.5 rounded-lg font-semibold shadow hover:bg-orange-600 transition text-sm sm:text-base">
+                Kirish
+            </button>
+        </a>
+
+    </nav>
+
+
+    <!-- Book Detail card -->
+    <div class="max-w-xl mx-auto mt-8 bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <div class="relative h-56">
+            {% if book.ktob %}
+            <img src="{{ book.ktob.url }}" alt="Kitob Cover"
+                class="absolute inset-0 w-full h-full object-cover opacity-60">
+            {% endif %}
+            <div class="relative z-10 flex flex-col items-center justify-center h-full text-white">
+                <h1 class="text-3xl font-bold drop-shadow-lg">{{ book.nomi }}</h1>
+                <p class="text-sm drop-shadow-md">Muallif: {{ book.yozuvchi }}</p>
+            </div>
+        </div>
+
+
+
+        <div class="p-6 space-y-5">
+            <p class="text-gray-700 text-base leading-relaxed">
+                {{ book.tavsifi }}
+            </p>
+
+
+            <!-- Buttons -->
+            <div class="flex gap-3 justify-center">
+
+                {% if book.pdf %}
+                <a href="{% url 'pdf' book.id %}"
+                    class="bg-gray-900 text-white px-5 py-3 rounded-xl hover:bg-orange-500 transition">
+                    PDF o‘qish
+                </a>
+                {% else %}
+                <p class="text-gray-500 italic">Bu kitob uchun PDF mavjud emas.</p>
+                {% endif %}
+
+
+
+                <button class="bg-green-600 text-white px-5 py-3 rounded-xl hover:bg-green-500 transition">Sotib
+                    ol
+                </button>
+
+                <div id="donatModal"
+                    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+                    <div class="bg-white rounded-2xl p-6 w-80 shadow-2xl relative">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Donat uchun karta</h2>
+
+                        <!-- Karta raqami -->
+                        <div class="flex justify-between items-center bg-gray-100 p-3 rounded-lg mb-3">
+                            <span id="cardNumber" class="text-gray-800 font-mono">9860 1606 0293 9318</span>
+                            <button class="bg-orange-500 text-white px-2 py-1 rounded hover:bg-orange-600 text-sm"
+                                onclick="copyText('cardNumber')">Копировать</button>
+                        </div>
+
+                        <!-- Foydalanuvchi -->
+                        <div class="flex justify-between items-center bg-gray-100 p-3 rounded-lg mb-4">
+                            <span id="userName" class="text-gray-800 font-semibold">M.D</span>
+                            <button class="bg-orange-500 text-white px-2 py-1 rounded hover:bg-orange-600 text-sm"
+                                onclick="copyText('userName')">Копировать</button>
+                        </div>
+
+                        <!-- Yopish tugmasi -->
+                        <div class="text-center">
+                            <button id="closeModal"
+                                class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition">Yopish</button>
+
+                        </div>
+                    </div>
+                </div>
+                <button id="donatBtn"
+                    class="bg-yellow-500 text-white px-6 py-3 rounded-xl hover:bg-yellow-400 transition shadow-lg">Donat</button>
+            </div>
+
+
+
+
+            <div>
+                <textarea placeholder="Fikringizni yozing…"
+                    class="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-orange-400"></textarea>
+                <button
+                    class="w-full bg-orange-500 text-white py-3 rounded-xl mt-3 hover:bg-orange-600 transition">Yozish</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        const modal = document.getElementById('donatModal');
+        const btn = document.getElementById('donatBtn');
+        const closeBtn = document.getElementById('closeModal');
+
+        btn.onclick = () => modal.classList.remove('hidden');
+        closeBtn.onclick = () => modal.classList.add('hidden');
+
+        function copyText(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert(text + " nusxa olindi!");
+            });
+        }
+    </script>
+
+
+</body>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% block content %}
+
+<body class="bg-gray-100 font-sans">
+
+    <!-- Header -->
+    <header class="bg-orange-500 p-4 text-white text-center font-bold text-xl shadow-md">
+        Kitob PDF O‘qish
+    </header>
+
+    <!-- PDF container -->
+    <main class="p-4">
+        <div class="bg-white shadow-xl rounded-3xl overflow-hidden max-w-xl mx-auto">
+
+            <!-- PDF viewer title -->
+            <div class="bg-orange-500 p-4 text-white text-center font-semibold text-lg">
+                Kitob Nomi
+            </div>
+
+            <!-- PDF o‘qish joyi -->
+            <div class="p-4">
+                {% if book.pdf %}
+                <iframe src="{{ book.pdf.url }}"
+                    class="w-full h-[70vh] rounded-xl border border-gray-300" allowfullscreen>
+                </iframe>
+                {% endif %}
+            </div>
+
+            <!-- Qo‘shimcha tugmalar -->
+            <div class="flex justify-center gap-4 p-4">
+                <a href="/" download
+                    class="bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-orange-500 transition">Download PDF</a>
+
+                <div id="donatModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+                    <div class="bg-white rounded-2xl p-6 w-80 shadow-2xl relative">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Donat uchun karta</h2>
+            
+                        <!-- Karta raqami -->
+                        <div class="flex justify-between items-center bg-gray-100 p-3 rounded-lg mb-3">
+                            <span id="cardNumber" class="text-gray-800 font-mono">9860 1606 0293 9318</span>
+                            <button class="bg-orange-500 text-white px-2 py-1 rounded hover:bg-orange-600 text-sm"
+                                onclick="copyText('cardNumber')">Копировать</button>
+                        </div>
+            
+                        <!-- Foydalanuvchi -->
+                        <div class="flex justify-between items-center bg-gray-100 p-3 rounded-lg mb-4">
+                            <span id="userName" class="text-gray-800 font-semibold">M.D</span>
+                            <button class="bg-orange-500 text-white px-2 py-1 rounded hover:bg-orange-600 text-sm"
+                                onclick="copyText('userName')">Копировать</button>
+                        </div>
+            
+                        <!-- Yopish tugmasi -->
+                        <div class="text-center">
+                            <button id="closeModal"
+                                class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition">Yopish</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="donatBtn"
+                    class="bg-yellow-500 text-white px-6 py-3 rounded-xl hover:bg-yellow-400 transition shadow-lg">Donat
+                    qilish</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const modal = document.getElementById('donatModal');
+        const btn = document.getElementById('donatBtn');
+        const closeBtn = document.getElementById('closeModal');
+
+        btn.onclick = () => modal.classList.remove('hidden');
+        closeBtn.onclick = () => modal.classList.add('hidden');
+
+        function copyText(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert(text + " nusxa olindi!");
+            });
+        }
+    </script>
+
+</body>
+
+{% endblock %}
