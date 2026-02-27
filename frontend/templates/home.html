@@ -145,7 +145,15 @@
               <p class="text-xs text-gray-500 mb-2 truncate">
                 {{ book.yozuvchi }}
               </p>
+              <div class="flex space-x-1 text-lg">
+                <div class="absolute top-2 right-2">
 
+                  <button onclick="toggleSave(event,'{{ book.nomi }}')" class="text-2xl saveBtn">
+                    ♡
+                  </button>
+
+                </div>
+              </div>
               <div class="flex space-x-1 text-lg">
                 {% for i in "12345" %}
                 <span class="transition duration-200 
@@ -170,6 +178,8 @@
     </section>
 
   </div>
+
+ 
 
   <script>
     document.querySelectorAll('.rating').forEach(ratingDiv => {

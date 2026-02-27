@@ -1,89 +1,233 @@
 {% extends 'base.html' %}
-
-
 {% load static %}
 {% block content %}
+
 <body class="bg-gradient-to-b from-orange-50 to-white flex justify-center">
 
-
 <div class="w-full max-w-md min-h-screen pb-28">
-  
-  <div class="bg-orange-500 text-white px-6 pt-14 pb-20 rounded-b-[40px] shadow-lg relative">
-    
-    <h1 class="text-xl font-bold">Sahifam</h1>
 
-    <div class="absolute left-1/2 -bottom-14 transform -translate-x-1/2">
-      <div class="w-28 h-28 rounded-full border-4 border-white shadow-xl bg-gray-200 overflow-hidden">
-        <img src="/static/img/80da39d781c93297dca8aeb4efa3a436.jpg" class="w-full h-full object-cover">
-      </div>
-    </div>
-  </div>
+<!-- HEADER -->
+<div class="bg-orange-500 text-white px-6 pt-14 pb-20 rounded-b-[40px] shadow-lg relative">
+<h1 class="text-xl font-bold">Sahifam</h1>
 
-  <div class="mt-16 text-center px-6">
-    <h2 class="text-xl font-bold text-gray-800">Dilnura</h2>
-    <p class="text-gray-500 text-sm">@Mutalibovvaaa_</p>
-  </div>
+<div class="absolute left-1/2 -bottom-14 transform -translate-x-1/2">
+<div class="w-28 h-28 rounded-full border-4 border-white shadow-xl bg-gray-200 overflow-hidden">
+<img id="profileImage"
+src="/static/img/80da39d781c93297dca8aeb4efa3a436.jpg"
+class="w-full h-full object-cover">
+</div>
+</div>
+</div>
 
-  <div class="grid grid-cols-3 gap-4 px-6 mt-6 text-center">
+<!-- PROFILE -->
+<div class="mt-16 text-center px-6">
+<h2 id="profileName" class="text-xl font-bold text-gray-800">Dilnura</h2>
+<p id="profileUsername" class="text-gray-500 text-sm">@Mutalibovvaaa_</p>
+</div>
 
-    <div class="bg-white rounded-2xl shadow-md py-4">
-      <p class="text-lg font-bold text-orange-500">24</p>
-      <p class="text-xs text-gray-500">O‘qilgan</p>
-    </div>
+<!-- STATS -->
+<div class="grid grid-cols-3 gap-4 px-6 mt-6 text-center">
+<div class="bg-white rounded-2xl shadow-md py-4">
+<p class="text-lg font-bold text-orange-500">24</p>
+<p class="text-xs text-gray-500">O‘qilgan</p>
+</div>
 
-    <div class="bg-white rounded-2xl shadow-md py-4">
-      <p class="text-lg font-bold text-orange-500">4.8</p>
-      <p class="text-xs text-gray-500">Reyting</p>
-    </div>
+<div class="bg-white rounded-2xl shadow-md py-4">
+<p class="text-lg font-bold text-orange-500">4.8</p>
+<p class="text-xs text-gray-500">Reyting</p>
+</div>
 
-    <div class="bg-white rounded-2xl shadow-md py-4">
-      <p class="text-lg font-bold text-orange-500">12</p>
-      <p class="text-xs text-gray-500">Sevimli</p>
-    </div>
+<div class="bg-white rounded-2xl shadow-md py-4">
+<p class="text-lg font-bold text-orange-500">12</p>
+<p class="text-xs text-gray-500">Sevimli</p>
+</div>
+</div>
 
-  </div>
+<!-- BUTTONS -->
+<div class="px-6 mt-8 space-y-4">
 
-  <!-- BUTTONS -->
-  <div class="px-6 mt-8 space-y-4">
+<button onclick="openEditModal()"
+class="w-full bg-orange-500 text-white py-3 rounded-2xl font-semibold shadow-md hover:bg-orange-600 transition">
+Profilni tahrirlash
+</button>
 
-    <button class="w-full bg-orange-500 text-white py-3 rounded-2xl font-semibold shadow-md hover:bg-orange-600 transition">
-      Profilni tahrirlash
-    </button>
-
-    <button class="w-full bg-white border border-orange-500 text-orange-500 py-3 rounded-2xl font-semibold shadow-sm hover:bg-orange-50 transition">
-      Sozlamalar
-    </button>
-
-  </div>
-
-  <!-- MENU LIST -->
-  <div class="px-6 mt-10 space-y-3">
-
-    <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm">
-      <span class="text-gray-700 font-medium">Mening kitoblarim</span>
-      <span>›</span>
-    </div>
-
-    <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm">
-      <span class="text-gray-700 font-medium">Saqlanganlar</span>
-      <span>›</span>
-    </div>
-
-    <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm">
-      <span class="text-gray-700 font-medium">To‘lovlar tarixi</span>
-      <span>›</span>
-    </div>
-
-    <div class="flex justify-between items-center bg-red-50 p-4 rounded-2xl shadow-sm">
-      <span class="text-red-500 font-medium">Chiqish</span>
-      <span class="text-red-500">⎋</span>
-    </div>
-
-  </div>
+<button
+class="w-full bg-white border border-orange-500 text-orange-500 py-3 rounded-2xl font-semibold shadow-sm hover:bg-orange-50 transition">
+Sozlamalar
+</button>
 
 </div>
 
+<!-- MENU -->
+<div class="px-6 mt-10 space-y-3">
+
+<div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm">
+<span>Mening kitoblarim</span><span>›</span>
+</div>
+
+<!-- ✅ SAQLANGANLAR -->
+<div onclick="openSaved()"
+class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm cursor-pointer">
+<span>Saqlanganlar</span><span>›</span>
+</div>
+
+<div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm">
+<span>To‘lovlar tarixi</span><span>›</span>
+</div>
+
+<div class="flex justify-between items-center bg-red-50 p-4 rounded-2xl shadow-sm">
+<span class="text-red-500">Chiqish</span>
+<span class="text-red-500">⎋</span>
+</div>
+
+</div>
+</div>
+
+
+<!-- ================= EDIT MODAL ================= -->
+<div id="editModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+<div class="bg-white rounded-3xl p-6 w-80 space-y-4">
+
+<h2 class="text-lg font-bold text-center">Profilni tahrirlash</h2>
+
+<input id="editName" class="w-full px-4 py-2 rounded-xl bg-gray-100">
+<input id="editUsername" class="w-full px-4 py-2 rounded-xl bg-gray-100">
+
+<input type="file" id="imageInput" accept="image/*">
+
+<button onclick="saveProfile()" class="w-full bg-orange-500 text-white py-2 rounded-xl">
+Saqlash
+</button>
+
+<button onclick="closeEditModal()" class="w-full bg-gray-200 py-2 rounded-xl">
+Bekor qilish
+</button>
+
+</div>
+</div>
+
+
+<!-- ================= SAQLANGANLAR MODAL ================= -->
+<div id="savedModal"
+class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+
+<div class="bg-white rounded-3xl w-80 max-h-[70vh] overflow-y-auto p-5">
+
+<h2 class="text-lg font-bold mb-4 text-center">Saqlangan kitoblar</h2>
+
+<div id="savedList" class="space-y-3 text-sm text-gray-700">
+</div>
+
+<button onclick="closeSaved()"
+class="w-full mt-4 bg-orange-500 text-white py-2 rounded-xl">
+Yopish
+</button>
+
+</div>
+</div>
+
+
+<!-- ================= JS ================= -->
+<script>
+
+/* ---------- PROFILE ---------- */
+
+function openEditModal(){
+editModal.classList.remove("hidden");
+editModal.classList.add("flex");
+
+editName.value = profileName.innerText;
+editUsername.value = profileUsername.innerText;
+}
+
+function closeEditModal(){
+editModal.classList.add("hidden");
+}
+
+function saveProfile(){
+
+profileName.innerText = editName.value;
+profileUsername.innerText = editUsername.value;
+
+localStorage.setItem("name", editName.value);
+localStorage.setItem("username", editUsername.value);
+
+const file = imageInput.files[0];
+
+if(file){
+const reader = new FileReader();
+reader.onload = e=>{
+profileImage.src = e.target.result;
+localStorage.setItem("profileImage", e.target.result);
+}
+reader.readAsDataURL(file);
+}
+
+closeEditModal();
+}
+
+/* ---------- LOAD PROFILE ---------- */
+
+window.onload = function(){
+
+if(localStorage.getItem("name"))
+profileName.innerText = localStorage.getItem("name");
+
+if(localStorage.getItem("username"))
+profileUsername.innerText = localStorage.getItem("username");
+
+if(localStorage.getItem("profileImage"))
+profileImage.src = localStorage.getItem("profileImage");
+
+loadSaved();
+}
+
+/* ---------- SAQLANGANLAR ---------- */
+
+function openSaved(){
+savedModal.classList.remove("hidden");
+savedModal.classList.add("flex");
+}
+
+function closeSaved(){
+savedModal.classList.add("hidden");
+}
+
+function loadSaved(){
+
+const list = document.getElementById("savedList");
+list.innerHTML = "";
+
+let books = JSON.parse(localStorage.getItem("savedBooks")) || [];
+
+if(books.length === 0){
+list.innerHTML = "<p class='text-center text-gray-400'>Hozircha saqlangan kitob yo‘q</p>";
+return;
+}
+
+books.forEach(book=>{
+list.innerHTML += `
+<div class="bg-orange-50 p-3 rounded-xl">
+📚 ${book}
+</div>
+`;
+});
+}
+
+
+/* 🔥 boshqa sahifadan chaqirish uchun */
+function saveBook(name){
+
+let books = JSON.parse(localStorage.getItem("savedBooks")) || [];
+
+if(!books.includes(name)){
+books.push(name);
+localStorage.setItem("savedBooks", JSON.stringify(books));
+}
+
+}
+
+</script>
+
 </body>
-
-
 {% endblock %}
